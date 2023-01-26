@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import MenuListItem from './MenuListItem';
+import PhotoIcon from '@mui/icons-material/Photo';
+import PhotoAlbumIcon from '@mui/icons-material/PhotoAlbum';
+import List from '@mui/material/List';
+import Toolbar from '@mui/material/Toolbar';
+import Divider from '@mui/material/Divider';
 
 const SidebarMenu = () => {
   return (
     <>
       <div className={"menu-list-container"}>
-        <div className="menu-list">
-          <Link to="/" className="menu-item">
-            <div className="menu-item__title">Photos</div>
-          </Link>
-          <Link to="/albums" className="menu-item">
-            <div className="menu-item__title">Albums</div>
-          </Link>
-        </div>
+      <Toolbar />
+        <Divider />
+        <List>
+          <MenuListItem icon={<PhotoIcon/>} text="Photos" to="/"></MenuListItem>
+          <MenuListItem icon={<PhotoAlbumIcon/>} text="Albums" to="/albums"></MenuListItem>
+        </List>
       </div>
     </>
   );
