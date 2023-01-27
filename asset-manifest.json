@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/photo-browser-challenge/static/css/main.d0fe237d.css",
-    "main.js": "/photo-browser-challenge/static/js/main.3aff42e4.js",
+    "main.js": "/photo-browser-challenge/static/js/main.789a2d08.js",
     "static/js/787.54859374.chunk.js": "/photo-browser-challenge/static/js/787.54859374.chunk.js",
     "index.html": "/photo-browser-challenge/index.html",
     "main.d0fe237d.css.map": "/photo-browser-challenge/static/css/main.d0fe237d.css.map",
-    "main.3aff42e4.js.map": "/photo-browser-challenge/static/js/main.3aff42e4.js.map",
+    "main.789a2d08.js.map": "/photo-browser-challenge/static/js/main.789a2d08.js.map",
     "787.54859374.chunk.js.map": "/photo-browser-challenge/static/js/787.54859374.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d0fe237d.css",
-    "static/js/main.3aff42e4.js"
+    "static/js/main.789a2d08.js"
   ]
 }
