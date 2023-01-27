@@ -4,6 +4,7 @@ import SidebarMenu from './SidebarMenu';
 import PhotosListView from './PhotosListView';
 import AlbumsView from './AlbumsView';
 import PageNotFound from './PageNotFound';
+import PhotoView from './PhotoView';
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -61,6 +62,10 @@ const App = () => {
                 exact
                 path="/albums"
                 element={(<AlbumsView />)}
+              />
+              <Route
+                path="/photo/:photoId"
+                element={(<PhotoView />)}
               />
               <Route path="*" element={(<PageNotFound />)} />
             </Routes>
