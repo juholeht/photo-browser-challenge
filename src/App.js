@@ -5,6 +5,7 @@ import PhotosListView from './PhotosListView';
 import AlbumsView from './AlbumsView';
 import PageNotFound from './PageNotFound';
 import PhotoView from './PhotoView';
+import { appendRootPath } from './helpers';
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -53,18 +54,18 @@ const App = () => {
             <Routes>
               <Route
                 exact
-                path="/"
+                path={appendRootPath("")}
                 element={(
                   <PhotosListView />
                 )}
               />
               <Route
                 exact
-                path="/albums"
+                path={appendRootPath("/albums")}
                 element={(<AlbumsView />)}
               />
               <Route
-                path="/photo/:photoId"
+                path={appendRootPath("/photo/:photoId")}
                 element={(<PhotoView />)}
               />
               <Route path="*" element={(<PageNotFound />)} />

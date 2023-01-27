@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useInView } from 'react-intersection-observer';
+import { appendRootPath } from './helpers';
 
 import './PhotosListView.css';
 import { fetchListOfPhotos } from './API';
@@ -40,7 +41,7 @@ const PhotosListView = () => {
     return (
         <div className='container'>
             {images.map((item) => (
-                <Link to={`/photo/${item.id}`}>
+                <Link to={appendRootPath(`/photo/${item.id}`)}>
                     <img
                     src={`${item.thumbnailUrl}`}
                     alt={item.title}
