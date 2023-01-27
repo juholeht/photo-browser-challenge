@@ -1,0 +1,1 @@
+export const isEmptyObject = obj  => JSON.stringify(obj) === '{}';
