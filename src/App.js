@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SidebarMenu from './SidebarMenu';
 import PhotosListView from './PhotosListView';
+import AlbumPhotosListView from './AlbumPhotosListView';
 import AlbumsView from './AlbumsView';
 import PageNotFound from './PageNotFound';
 import PhotoView from './PhotoView';
@@ -63,6 +64,11 @@ const App = () => {
                 exact
                 path={appendRootPath("/albums")}
                 element={(<AlbumsView />)}
+              />
+              <Route
+                exact
+                path={appendRootPath("/albums/:albumId/photos")}
+                element={(<AlbumPhotosListView />)}
               />
               <Route
                 path={appendRootPath("/photo/:photoId")}

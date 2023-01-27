@@ -61,6 +61,23 @@ export const fetchAlbumInfo = (albumId) => {
     });
 }
 
+export const fetchAlbumPhotos = (albumId, page, limit) => {
+    if (isParameterInvalid(albumId)) {
+        throw new Error(createInvalidParamErrorMessage(albumId));
+    }
+    if (isParameterInvalid(page) || isParameterInvalid(limit)) {
+        throw new Error(createInvalidParamErrorMessage(page, limit));
+    }
+    return fetch(`${PUBLIC_API_URL}/albums/${albumId}/photos?_page=${page}&_limit=${limit}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(createHttpErrorMessage(response.status));
+        } else {
+            return response.json();
+        }
+    });
+}
+
 export const fetchUserInfo = (userId) => {
     if (isParameterInvalid(userId)) {
         throw new Error(createInvalidParamErrorMessage(userId));
