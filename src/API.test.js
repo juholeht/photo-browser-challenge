@@ -1,7 +1,9 @@
 import { 
     fetchListOfPhotos, 
     fetchListOfAlbums, 
-    fetchUserInfo, 
+    fetchUserInfo,
+    fetchPhotoInfo,
+    fetchAlbumInfo, 
     PUBLIC_API_URL, 
     createHttpErrorMessage,
     createInvalidParamErrorMessage } from "./API";
@@ -116,6 +118,100 @@ describe("fetchListOfAlbums", () => {
     });
 });
 
+describe("fetchPhotoInfo", () => {
+    beforeEach(() => {
+      jest.spyOn(global, "fetch").mockImplementation(() =>
+        Promise.resolve({
+          json: () => Promise.resolve({ data: "mocked data" }),
+          ok: true,
+        })
+      );
+    });
+  
+    afterEach(() => {
+      global.fetch.mockRestore();
+    });
+  
+    it("should call the fetch API with the correct URL", async () => {
+      await fetchPhotoInfo(1);
+      expect(global.fetch).toHaveBeenCalledWith(`${PUBLIC_API_URL}/photos/1`);
+    });
+  
+    it("should throw an error if the photoId parameter is invalid", () => {
+      expect(() => fetchUserInfo(undefined)).toThrowError(
+        createInvalidParamErrorMessage(undefined)
+      );
+    });
+  
+    it("should handle a not ok HTTP response", async () => {
+      global.fetch.mockImplementationOnce(() =>
+        Promise.resolve({
+          ok: false,
+          status: 500,
+        })
+      );
+      let testError = {message: "foo"};
+      try {
+        await fetchPhotoInfo(1);
+      } catch (error) {
+        testError = error;
+      }
+      expect(testError.message).toEqual(createHttpErrorMessage(500));
+    });
+  
+    it("should return the data when the response is ok", async () => {
+      const data = await fetchPhotoInfo(1);
+      expect(data).toEqual({ data: "mocked data" });
+    });
+  });
+
+  describe("fetchAlbumInfo", () => {
+    beforeEach(() => {
+      jest.spyOn(global, "fetch").mockImplementation(() =>
+        Promise.resolve({
+          json: () => Promise.resolve({ data: "mocked data" }),
+          ok: true,
+        })
+      );
+    });
+  
+    afterEach(() => {
+      global.fetch.mockRestore();
+    });
+  
+    it("should call the fetch API with the correct URL", async () => {
+      await fetchAlbumInfo(1);
+      expect(global.fetch).toHaveBeenCalledWith(`${PUBLIC_API_URL}/albums/1`);
+    });
+  
+    it("should throw an error if the photoId parameter is invalid", () => {
+      expect(() => fetchAlbumInfo(undefined)).toThrowError(
+        createInvalidParamErrorMessage(undefined)
+      );
+    });
+  
+    it("should handle a not ok HTTP response", async () => {
+      global.fetch.mockImplementationOnce(() =>
+        Promise.resolve({
+          ok: false,
+          status: 500,
+        })
+      );
+      let testError = {message: "foo"};
+      try {
+        await fetchAlbumInfo(1);
+      } catch (error) {
+        testError = error;
+      }
+      expect(testError.message).toEqual(createHttpErrorMessage(500));
+    });
+  
+    it("should return the data when the response is ok", async () => {
+      const data = await fetchAlbumInfo(1);
+      expect(data).toEqual({ data: "mocked data" });
+    });
+  });
+
 describe("fetchUserInfo", () => {
     beforeEach(() => {
       jest.spyOn(global, "fetch").mockImplementation(() =>
@@ -132,7 +228,7 @@ describe("fetchUserInfo", () => {
   
     it("should call the fetch API with the correct URL", async () => {
       await fetchUserInfo(1);
-      expect(global.fetch).toHaveBeenCalledWith(`${PUBLIC_API_URL}/users`);
+      expect(global.fetch).toHaveBeenCalledWith(`${PUBLIC_API_URL}/users/1`);
     });
   
     it("should throw an error if the userId parameter is invalid", () => {

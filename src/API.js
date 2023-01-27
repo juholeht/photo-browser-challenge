@@ -33,11 +33,39 @@ export const fetchListOfAlbums = (page, limit) => {
     });
 }
 
+export const fetchPhotoInfo = (photoId) => {
+    if (isParameterInvalid(photoId)) {
+        throw new Error(createInvalidParamErrorMessage(photoId));
+    }
+    return fetch(`${PUBLIC_API_URL}/photos/${photoId}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(createHttpErrorMessage(response.status));
+        } else {
+            return response.json();
+        }
+    });
+}
+
+export const fetchAlbumInfo = (albumId) => {
+    if (isParameterInvalid(albumId)) {
+        throw new Error(createInvalidParamErrorMessage(albumId));
+    }
+    return fetch(`${PUBLIC_API_URL}/albums/${albumId}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(createHttpErrorMessage(response.status));
+        } else {
+            return response.json();
+        }
+    });
+}
+
 export const fetchUserInfo = (userId) => {
     if (isParameterInvalid(userId)) {
         throw new Error(createInvalidParamErrorMessage(userId));
     }
-    return fetch(`${PUBLIC_API_URL}/users`)
+    return fetch(`${PUBLIC_API_URL}/users/${userId}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(createHttpErrorMessage(response.status));
