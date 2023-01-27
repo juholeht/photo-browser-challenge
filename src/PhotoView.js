@@ -1,7 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
+import { fetchPhotoInfo, fetchAlbumInfo, fetchUserInfo } from './API';
+import { isEmptyObject } from './helpers';
+import './PhotoView.css';
 
-const PhotoView = () => (
-    <div>View for single photo in full size</div>
-);
+
+const fetchUserInfoByAlbumId = async (albumId) => {
+    const albumInfo = await fetchAlbumInfo(albumId);
+    return fetchUserInfo(albumInfo.userId);
+}
+
+const PhotoView = () => {
+    const [photoInfo, setPhotoInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({});
+    const { photoId } = useParams();
+
+    useEffect(() => {
+        fetchPhotoInfo(photoId)
+        .then(data => {
+            console.log(data);
+            setPhotoInfo(data);
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      },[photoId]);
+    
+    useEffect(() => {
+        fetchUserInfoByAlbumId(photoInfo.albumId)
+        .then(data => {
+            console.log(data);
+            setUserInfo(data);
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+    }, [photoInfo]);
+
+    return (
+        <>
+        {
+            isEmptyObject(photoInfo) ? <div>Loading...</div> : 
+            <div className="photo-container">
+                <img src={photoInfo.url} alt="full-size" />
+                {!isEmptyObject || <div>{JSON.stringify(userInfo)}</div>}
+            </div>
+        }
+        </>
+)};
 
 export default PhotoView;
