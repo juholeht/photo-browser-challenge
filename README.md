@@ -17,7 +17,7 @@ Homepage: https://juholeht.github.io/photo-browser-challenge
 
 Backend for dummy data: http://jsonplaceholder.typicode.com/
 
-# Next steps:
+## Next steps:
 - improve infinite scrolling so that first images will be removed from browser's memory once user has scrolled long enough. This improvement would make infite scrolling future proof too.
 - improve code coverage (more tests)
 - implement localization (using react-intl)
