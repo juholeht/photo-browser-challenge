@@ -27,14 +27,16 @@ const PhotoView = () => {
       },[photoId]);
     
     useEffect(() => {
-        fetchUserInfoByAlbumId(photoInfo.albumId)
-        .then(data => {
-            console.log(data);
-            setUserInfo(data);
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
+        if (!isEmptyObject(photoInfo)) {
+          fetchUserInfoByAlbumId(photoInfo.albumId)
+          .then(data => {
+              console.log(data);
+              setUserInfo(data);
+            })
+            .catch(error => {
+              console.error("Error:", error);
+            });
+        }
     }, [photoInfo]);
 
     return (
