@@ -6,18 +6,21 @@ Photo Browser is a simple web app representing features that are fairly common i
 - displaying the full-sized photo along with the info by clicking a single photo
 - show some of the user details are shown also below full-sized photo
 - display album view displaying all images in a single album
-- how to implement infinite scroll so that app fetches more data when user scrolls down (viewport)
-- how to implement routing so that user navigation works back and forth
+- implement infinite scroll so that app fetches more data when user scrolls down (viewport)
+- implement routing so that user navigation works back and forth
 - be able to share an URL that links to a single photo's page
 - deploy project to GitHub Pages using gh-pages npm package
 - scale app for a larger purpose (feature and data wise)
 - setup eslinter and prettier for cleaner code
 
 Homepage: https://juholeht.github.io/photo-browser-challenge
+Backend for dummy data: http://jsonplaceholder.typicode.com/
 
 # Next steps:
-- improve infinite scrolling so that first images will be removed from browser memory once user has scrolled long enough. This improvement would make it future proof too.
-- improve code coverage U()
+- improve infinite scrolling so that first images will be removed from browser's memory once user has scrolled long enough. This improvement would make infite scrolling future proof too.
+- improve code coverage (more tests)
+- implement localization (using react-intl)
+- setup TestCafe UI test case
 
 ## Available Scripts
 
