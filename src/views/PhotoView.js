@@ -45,7 +45,13 @@ const PhotoView = () => {
             isEmptyObject(photoInfo) ? <div>Loading...</div> : 
             <div className="photo-container">
                 <img src={photoInfo.url} alt="full-size" />
-                {!isEmptyObject || <div>{JSON.stringify(userInfo)}</div>}
+                {!isEmptyObject || 
+                <div>
+                <p>Title: {photoInfo.title}</p>  
+                <p>Author: {userInfo.name}</p>
+                <p>Email: {userInfo.email}</p>
+                <p>Website: {userInfo.website}</p>
+                </div>}
             </div>
         }
         </>
