@@ -12,8 +12,8 @@ const PhotosListView = ({ fetchData = (page) => (fetchListOfPhotos(page, LIMIT_C
     const [images, isFetching, ref] = useInfiniteScroll(fetchData);
     return (
         <div className='container'>
-            {images.map((item) => (
-                <Link to={appendRootPath(`/photo/${item.id}`)}>
+            {images.map((item, index) => (
+                <Link key={`${item.img}-${index}`} to={appendRootPath(`/photo/${item.id}`)}>
                     <img
                     src={`${item.thumbnailUrl}`}
                     alt={item.title}

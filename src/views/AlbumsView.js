@@ -17,8 +17,8 @@ const AlbumsView = () => {
     const [images, isFetching, ref] = useInfiniteScroll(fetchDataCallback);
     return (
         <div className='container'>
-          {images.map((item) => (
-            <ImageListItem key={item.img}>
+          {images.map((item, index) => (
+            <ImageListItem key={`${item.img}-${index}`}>
               <Link to={appendRootPath(`/albums/${item.id}/photos`)}>
                 <img
                   src={`${albumImage}?w=248&fit=crop&auto=format`}
