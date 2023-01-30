@@ -1,6 +1,24 @@
 # photo-browser-challenge
 Photo Browser is a simple web app representing features that are fairly common in many real life web apps out there (i.e. fetching JSON formatted data from a REST API, presenting the data on a list and perhaps demonstrating some basic navigation in form of opening a details page describing single item in detail).
 
+# Exercise demonstrates how to:
+- display a list of all the photo thumbnails using the `/photos` endpoint
+- displaying the full-sized photo along with the info by clicking a single photo
+- show some of the user details are shown also below full-sized photo
+- display album view displaying all images in a single album
+- how to implement infinite scroll so that app fetches more data when user scrolls down (viewport)
+- how to implement routing so that user navigation works back and forth
+- be able to share an URL that links to a single photo's page
+- deploy project to GitHub Pages using gh-pages npm package
+- scale app for a larger purpose (feature and data wise)
+- setup eslinter and prettier for cleaner code
+
+Homepage: https://juholeht.github.io/photo-browser-challenge
+
+# Next steps:
+- improve infinite scrolling so that first images will be removed from browser memory once user has scrolled long enough. This improvement would make it future proof too.
+- improve code coverage U()
+
 ## Available Scripts
 
 In the project directory, you can run:
