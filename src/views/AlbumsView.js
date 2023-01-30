@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { appendRootPath } from './helpers';
+import { appendRootPath } from '../helpers';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 import useInfiniteScroll from './useInfiniteScroll';
 
-import albumImage from "./img/album.png";
+import albumImage from "../img/album.png";
 import './AlbumsView.css';
-import { fetchListOfAlbums } from './API';
+import { fetchListOfAlbums } from '../API';
 
 const LIMIT_COUNT = 20;
 

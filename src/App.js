@@ -1,11 +1,11 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SidebarMenu from './SidebarMenu';
-import PhotosListView from './PhotosListView';
-import AlbumPhotosListView from './AlbumPhotosListView';
-import AlbumsView from './AlbumsView';
-import PageNotFound from './PageNotFound';
-import PhotoView from './PhotoView';
+import PhotosListView from './views/PhotosListView';
+import AlbumPhotosListView from './views/AlbumPhotosListView';
+import AlbumsView from './views/AlbumsView';
+import PageNotFoundView from './views/PageNotFoundView';
+import PhotoView from './views/PhotoView';
 import { appendRootPath } from './helpers';
 
 import Box from '@mui/material/Box';
@@ -74,7 +74,7 @@ const App = () => {
                 path={appendRootPath("/photo/:photoId")}
                 element={(<PhotoView />)}
               />
-              <Route path="*" element={(<PageNotFound />)} />
+              <Route path="*" element={(<PageNotFoundView />)} />
             </Routes>
           </Box>
         </Box>

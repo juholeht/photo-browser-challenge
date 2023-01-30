@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { fetchPhotoInfo, fetchAlbumInfo, fetchUserInfo } from './API';
-import { isEmptyObject } from './helpers';
+import { fetchPhotoInfo, fetchAlbumInfo, fetchUserInfo } from '../API';
+import { isEmptyObject } from '../helpers';
 import './PhotoView.css';
 
 
