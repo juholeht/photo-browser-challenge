@@ -10,12 +10,15 @@ import Divider from '@mui/material/Divider';
 const SidebarMenu = () => {
   return (
     <>
-      <div className={"menu-list-container"}>
-      <Toolbar />
+      <div className={'menu-list-container'}>
+        <Toolbar />
         <Divider />
         <List>
-          <MenuListItem icon={<PhotoIcon/>} text="Photos" to={appendRootPath("")}></MenuListItem>
-          <MenuListItem icon={<PhotoAlbumIcon/>} text="Albums" to={appendRootPath("/albums")}></MenuListItem>
+          <MenuListItem icon={<PhotoIcon />} text="Photos" to={appendRootPath('')}></MenuListItem>
+          <MenuListItem
+            icon={<PhotoAlbumIcon />}
+            text="Albums"
+            to={appendRootPath('/albums')}></MenuListItem>
         </List>
       </div>
     </>

@@ -25,8 +25,7 @@ const App = () => {
           <CssBaseline />
           <AppBar
             position="fixed"
-            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-          >
+            sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
             <Toolbar>
               <Typography variant="h6" noWrap component="div">
                 Photo browser
@@ -39,48 +38,31 @@ const App = () => {
               flexShrink: 0,
               '& .MuiDrawer-paper': {
                 width: drawerWidth,
-                boxSizing: 'border-box',
-              },
+                boxSizing: 'border-box'
+              }
             }}
             variant="permanent"
-            anchor="left"
-          >
+            anchor="left">
             <SidebarMenu />
           </Drawer>
-          <Box
-            component="main"
-            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-          >
+          <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
             <Toolbar />
             <Routes>
+              <Route exact path={appendRootPath('')} element={<PhotosListView />} />
+              <Route exact path={appendRootPath('/albums')} element={<AlbumsView />} />
               <Route
                 exact
-                path={appendRootPath("")}
-                element={(
-                  <PhotosListView />
-                )}
+                path={appendRootPath('/albums/:albumId/photos')}
+                element={<AlbumPhotosListView />}
               />
-              <Route
-                exact
-                path={appendRootPath("/albums")}
-                element={(<AlbumsView />)}
-              />
-              <Route
-                exact
-                path={appendRootPath("/albums/:albumId/photos")}
-                element={(<AlbumPhotosListView />)}
-              />
-              <Route
-                path={appendRootPath("/photo/:photoId")}
-                element={(<PhotoView />)}
-              />
-              <Route path="*" element={(<PageNotFoundView />)} />
+              <Route path={appendRootPath('/photo/:photoId')} element={<PhotoView />} />
+              <Route path="*" element={<PageNotFoundView />} />
             </Routes>
           </Box>
         </Box>
       </Router>
     </div>
   );
-}
+};
 
 export default App;
