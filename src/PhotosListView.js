@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
-import { useInView } from 'react-intersection-observer';
 import { appendRootPath } from './helpers';
+import useInfiniteScroll from './useInfiniteScroll';
 
 import './PhotosListView.css';
 import { fetchListOfPhotos } from './API';
@@ -9,35 +9,8 @@ import { fetchListOfPhotos } from './API';
 const LIMIT_COUNT = 100;
 
 const PhotosListView = () => {
-    const [images, setImages] = useState([]);
-    const [page, setPage] = useState(1);
-    const [isFetching, setIsFetching] = useState(false);
-    const [isEnd, setIsEnd] = useState(false);
-
-    const [ref, inView] = useInView({
-        threshold: 0.1,
-    });
-
-    useEffect(() => {
-        if (inView && !isFetching && !isEnd) {
-            setIsFetching(true);
-            fetchListOfPhotos(page, LIMIT_COUNT)
-            .then(data => {
-                if (data.length > 0) {
-                    setImages(prevImages => [...prevImages, ...data]);
-                    setPage(prevPage => prevPage + 1);
-                } else {
-                    setIsEnd(true);
-                }
-                setIsFetching(false);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                setIsFetching(false);
-            });
-        }
-    }, [inView, isFetching, isEnd, page]);
-
+    const fetchDataCallback = (page) => (fetchListOfPhotos(page, LIMIT_COUNT));
+    const [images, isFetching, ref] = useInfiniteScroll(fetchDataCallback);
     return (
         <div className='container'>
             {images.map((item) => (
@@ -45,14 +18,12 @@ const PhotosListView = () => {
                     <img
                     src={`${item.thumbnailUrl}`}
                     alt={item.title}
-                    id={item.id}
                     loading="lazy"
                     />
                 </Link>
             ))}
             <div ref={ref} style={{height: '100px'}}>
                 {isFetching && <div>Loading...</div>}
-                {isEnd && <div>The End...</div>}
             </div>
         </div>
     );
