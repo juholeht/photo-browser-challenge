@@ -14,6 +14,7 @@ Photo Browser is a simple web app representing features that are fairly common i
 - setup eslinter and prettier for cleaner code
 
 Homepage: https://juholeht.github.io/photo-browser-challenge
+
 Backend for dummy data: http://jsonplaceholder.typicode.com/
 
 # Next steps:
