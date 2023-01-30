@@ -18,7 +18,6 @@ const PhotoView = () => {
     useEffect(() => {
         fetchPhotoInfo(photoId)
         .then(data => {
-            console.log(data);
             setPhotoInfo(data);
           })
           .catch(error => {
@@ -30,7 +29,6 @@ const PhotoView = () => {
         if (!isEmptyObject(photoInfo)) {
           fetchUserInfoByAlbumId(photoInfo.albumId)
           .then(data => {
-              console.log(data);
               setUserInfo(data);
             })
             .catch(error => {
